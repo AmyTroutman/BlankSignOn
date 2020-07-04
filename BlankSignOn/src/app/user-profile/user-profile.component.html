@@ -1,1 +1,19 @@
-<p>user-profile works!</p>
+<form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
+    <label for="firstName">First Name</label>
+    <input type="text">
+    <label for="lastName">Last Name</label>
+    <input type="text">
+    <label for="dob">Date of Birth</label>
+    <input type="date">
+    <label for="addresss">Home Address</label>
+    <input type="text">
+    <label for="food">Favorite Food</label>
+    <input type="text">
+    <label for="movie">Favorite Movie</label>
+    <input type="text">
+    <label for="artist">Favorite Artist</label>
+    <input type="text">
+    <label for="hobbies">Hobbies</label>
+    <input type="text">
+</form>
+<button type="submit" class="btn btn-primary" [disabled]="f.invalid">Save</button>
