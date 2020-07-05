@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('Form Submitted!');
+      console.log(this.form);
     }
   }
 

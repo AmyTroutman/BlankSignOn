@@ -40,7 +40,6 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit() {
     this.AuthSerivce.add(this.RegisterForm.controls.username.value, this.RegisterForm.controls.passwordConfirm.value);
-    console.log(this.RegisterForm);
     this.routerService.navigate(['/login']);
   }
 

@@ -20,5 +20,5 @@
         <label *ngIf="passwordError"class="alert alert-danger">Passwords do not match</label>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="RegisterForm.invalid">Register</button>
+    <a routerLink="/login" class="btn btn-outline-primary">Back</a>
 </form>
-<a routerLink="/login">Back</a>
