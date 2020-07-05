@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
 
   RegisterForm: FormGroup;
-  constructor(private routerService: Router) {
+  constructor(private routerService: Router, private AuthSerivce: AuthService) {
     this.RegisterForm = new FormGroup({
       username: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required]),
@@ -38,6 +39,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
+    this.AuthSerivce.add(this.RegisterForm.controls.username.value, this.RegisterForm.controls.passwordConfirm.value);
     console.log(this.RegisterForm);
     this.routerService.navigate(['/login']);
   }
@@ -51,5 +53,6 @@ export class RegistrationComponent implements OnInit {
     }
     return null;
   }
+
 
 }

@@ -18,5 +18,6 @@
           </span>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="LoginForm.invalid">Login</button>
+    <label class="alert alert-danger" *ngIf="!validLogin">Username or password is incorrect</label>
 </form>
 <a routerLink="/register">Register</a>
