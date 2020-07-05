@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { profile } from 'console';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,7 +8,17 @@ import { profile } from 'console';
 
 export class UserProfileComponent implements OnInit {
 
-  model: UserProfile = new UserProfile();
+  newUser = {
+    firstName: '',
+    lastName: '',
+    dob: '',
+    address: '',
+    food: '',
+    movie: '',
+    artist: '',
+    hobbies: []
+  };
+
   @ViewChild('f') form: any;
 
   constructor() { }

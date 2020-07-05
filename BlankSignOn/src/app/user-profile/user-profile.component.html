@@ -1,19 +1,144 @@
-<form novalidate (ngSubmit)="onSubmit()" #f="ngForm">
-    <label for="firstName">First Name</label>
-    <input type="text">
-    <label for="lastName">Last Name</label>
-    <input type="text">
-    <label for="dob">Date of Birth</label>
-    <input type="date">
-    <label for="addresss">Home Address</label>
-    <input type="text">
-    <label for="food">Favorite Food</label>
-    <input type="text">
-    <label for="movie">Favorite Movie</label>
-    <input type="text">
-    <label for="artist">Favorite Artist</label>
-    <input type="text">
-    <label for="hobbies">Hobbies</label>
-    <input type="text">
-</form>
-<button type="submit" class="btn btn-primary" [disabled]="f.invalid">Save</button>
+<div class="container">
+    <form novalidate
+          (ngSubmit)="onSubmit()"
+          #f="ngForm">
+    
+        <fieldset ngModelGroup="name">
+            <div class="form-group"
+                 [ngClass]="{
+            'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
+            'has-success': firstName.valid && (firstName.dirty || firstName.touched)
+       }">
+                <label>First Name</label>
+                <input type="text"
+                       class="form-control"
+                       name="firstName"
+                       [(ngModel)]="newUser.firstName"
+                       required
+                       #firstName="ngModel">
+                <div class="form-control-feedback"
+                     *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                    <p *ngIf="firstName.errors.required">First name is required</p>
+                </div>
+            </div>
+    
+            <div class="form-group"
+                 [ngClass]="{
+            'has-danger': lastName.invalid && (lastName.dirty || lastName.touched),
+            'has-success': lastName.valid && (lastName.dirty || lastName.touched)
+       }">
+                <label>Last Name</label>
+                <input type="text"
+                       class="form-control"
+                       name="lastName"
+                       [(ngModel)]="newUser.lastName"
+                       required
+                       #lastName="ngModel">
+                <div class="form-control-feedback"
+                     *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                    <p *ngIf="lastName.errors.required">Last name is required</p>
+                </div>
+            </div>
+        </fieldset>
+    
+    
+        <div class="form-group"
+             [ngClass]="{
+            'has-danger': dob.invalid && (dob.dirty || dob.touched),
+            'has-success': dob.valid && (dob.dirty || dob.touched)
+       }">
+            <label>Date of Birth</label>
+            <input type="dob"
+                   class="form-control"
+                   name="dob"
+                   [(ngModel)]="newUser.dob"
+                   required
+                   pattern="^((0[13578]|1[02])[\/.]31[\/.](18|19|20)[0-9]{2})|((01|0[3-9]|1[1-2])[\/.](29|30)[\/.](18|19|20)[0-9]{2})|((0[1-9]|1[0-2])[\/.](0[1-9]|1[0-9]|2[0-8])[\/.](18|19|20)[0-9]{2})|((02)[\/.]29[\/.](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))$"
+                   #dob="ngModel">
+            <div class="form-control-feedback"
+                 *ngIf="dob.errors && (dob.dirty || dob.touched)">
+                <p *ngIf="dob.errors.required">Date of Birth is required</p>
+                <p *ngIf="dob.errors.pattern">please format as mm/dd/yyyy</p>
+            </div>
+        </div>
+    
+    <div class="form-group"
+             [ngClass]="{
+            'has-danger': address.invalid && (address.dirty || address.touched),
+            'has-success': address.valid && (address.dirty || address.touched)
+       }">
+            <label>Home Addresss</label>
+            <input type="address"
+                   class="form-control"
+                   name="address"
+                   [(ngModel)]="newUser.address"
+                   required
+                   #address="ngModel">
+            <div class="form-control-feedback"
+                 *ngIf="address.errors && (address.dirty || address.touched)">
+                <p *ngIf="address.errors.required">address number is required</p>
+            </div>
+        </div>
+    
+        <div class="form-group"
+             [ngClass]="{
+            'has-danger': food.invalid && (food.dirty || food.touched),
+            'has-success': food.valid && (food.dirty || food.touched)
+            }">
+            <label>Favorite Food</label>
+            <input type="food"
+                   class="form-control"
+                   name="food"
+                   [(ngModel)]="newUser.food"
+                   required
+                   #food="ngModel">
+            <div class="form-control-feedback"
+                 *ngIf="food.errors && (food.dirty || food.touched)">
+                <p *ngIf="food.errors.required">food is required</p>
+            </div>
+        </div>
+    
+        <div class="form-group"
+        [ngClass]="{
+       'has-danger': movie.invalid && (movie.dirty || movie.touched),
+       'has-success': movie.valid && (movie.dirty || movie.touched)
+       }">
+       <label>Favorite Movie</label>
+       <input type="movie"
+              class="form-control"
+              name="movie"
+              [(ngModel)]="newUser.movie"
+              required
+              #movie="ngModel">
+       <div class="form-control-feedback"
+            *ngIf="movie.errors && (movie.dirty || movie.touched)">
+           <p *ngIf="movie.errors.required">movie is required</p>
+       </div>
+   </div>
+
+   <div class="form-group"
+             [ngClass]="{
+            'has-danger': artist.invalid && (artist.dirty || artist.touched),
+            'has-success': artist.valid && (artist.dirty || artist.touched)
+            }">
+            <label>Favorite Artist</label>
+            <input type="artist"
+                   class="form-control"
+                   name="artist"
+                   [(ngModel)]="newUser.artist"
+                   required
+                   #artist="ngModel">
+            <div class="form-control-feedback"
+                 *ngIf="artist.errors && (artist.dirty || artist.touched)">
+                <p *ngIf="artist.errors.required">artist is required</p>
+            </div>
+        </div>
+    
+        <button type="submit"
+                class="btn btn-primary"
+                [disabled]="f.invalid">Submit
+        </button>
+    
+        <pre>{{f.value | json}}</pre>
+    </form> 
+    </div> 
